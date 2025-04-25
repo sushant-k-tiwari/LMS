@@ -4,6 +4,7 @@ import LoginScreen from "./screens/LoginScreen";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import Next from "./screens/Next";
 
 export default function Index() {
   const [loaded, error] = useFonts({
@@ -33,6 +34,7 @@ export default function Index() {
     >
       <View style={styles.container}>
         <SignedIn>
+          <Next/>
         </SignedIn>
         <SignedOut>
           <LoginScreen/>
