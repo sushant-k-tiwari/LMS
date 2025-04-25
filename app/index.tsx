@@ -1,13 +1,14 @@
 import { View, StyleSheet } from "react-native";
-import { useFonts } from 'expo-font';
+import { useFonts } from "expo-font";
 import LoginScreen from "./screens/LoginScreen";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 
 export default function Index() {
   const [loaded, error] = useFonts({
-    'Pop': require('../assets/fonts/Poppins-Bold.ttf'),
-    'Monst': require('../assets/fonts/Montserrat-SemiBoldItalic.ttf')
+    Pop: require("../assets/fonts/Poppins-Bold.ttf"),
+    Monst: require("../assets/fonts/Montserrat-SemiBoldItalic.ttf"),
   });
 
   useEffect(() => {
@@ -25,9 +26,19 @@ export default function Index() {
   }
 
   return (
-    <View style={styles.container}>
-      <LoginScreen />
-    </View>
+    <ClerkProvider
+      publishableKey={
+        "pk_test_dGhhbmtmdWwtcG9sZWNhdC00OC5jbGVyay5hY2NvdW50cy5kZXYk"
+      }
+    >
+      <View style={styles.container}>
+        <SignedIn>
+        </SignedIn>
+        <SignedOut>
+          <LoginScreen/>
+        </SignedOut>
+      </View>
+    </ClerkProvider>
   );
 }
 
