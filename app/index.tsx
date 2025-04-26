@@ -35,12 +35,15 @@ export default function Index() {
       }
     >
       <View style={styles.container}>
+        
         <SignedIn>
-            <TabNavigation />
+          <TabNavigation />
         </SignedIn>
+
         <SignedOut>
           <LoginScreen />
         </SignedOut>
+
       </View>
     </ClerkProvider>
   );
@@ -49,5 +52,7 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
+    width: "100%",
   },
 });
