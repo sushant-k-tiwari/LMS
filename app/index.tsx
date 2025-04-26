@@ -4,7 +4,9 @@ import LoginScreen from "./screens/LoginScreen";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import Next from "./screens/Next";
+import HomeScreen from "@/app/screens/HomeScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import TabNavigation from "./navigation/TabNavigation";
 
 export default function Index() {
   const [loaded, error] = useFonts({
@@ -34,10 +36,10 @@ export default function Index() {
     >
       <View style={styles.container}>
         <SignedIn>
-          <Next/>
+            <TabNavigation />
         </SignedIn>
         <SignedOut>
-          <LoginScreen/>
+          <LoginScreen />
         </SignedOut>
       </View>
     </ClerkProvider>

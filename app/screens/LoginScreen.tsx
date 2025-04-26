@@ -8,6 +8,7 @@ import * as WebBrowser from "expo-web-browser";
 import * as AuthSession from "expo-auth-session";
 import { useSSO } from "@clerk/clerk-expo";
 
+
 export const useWarmUpBrowser = () => {
   useEffect(() => {
     // Preloads the browser for Android devices to reduce authentication load time

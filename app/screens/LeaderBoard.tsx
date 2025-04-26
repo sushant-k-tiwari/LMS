@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Next = () => {
+const LeaderBoard = () => {
   return (
     <View>
-      <Text>You are logged in!!</Text>
+      <Text>LeaderBoard</Text>
     </View>
   )
 }
 
-export default Next
+export default LeaderBoard
 
 const styles = StyleSheet.create({})
