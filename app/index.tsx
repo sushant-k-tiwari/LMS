@@ -10,8 +10,14 @@ import TabNavigation from "./navigation/TabNavigation";
 
 export default function Index() {
   const [loaded, error] = useFonts({
-    Pop: require("../assets/fonts/Poppins-Bold.ttf"),
-    Monst: require("../assets/fonts/Montserrat-SemiBoldItalic.ttf"),
+    PopBold: require("../assets/fonts/Poppins-Bold.ttf"),
+    PopMed: require("../assets/fonts/Poppins-Medium.ttf"),
+    PopReg: require("../assets/fonts/Poppins-Regular.ttf"),
+    PopSb: require("../assets/fonts/Poppins-SemiBold.ttf"),
+    MonstBold: require("../assets/fonts/Montserrat-Bold.ttf"),
+    MonstMed: require("../assets/fonts/Montserrat-Medium.ttf"),
+    MonstReg: require("../assets/fonts/Montserrat-Regular.ttf"),
+    MonstSb: require("../assets/fonts/Montserrat-SemiBold.ttf"),
   });
 
   useEffect(() => {
