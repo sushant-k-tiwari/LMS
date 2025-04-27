@@ -4,7 +4,7 @@ import { useUser } from "@clerk/clerk-expo";
 import Colors from "@/app/utils/Colors";
 import { useFonts } from "expo-font";
 import { SplashScreen } from "expo-router";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { types } from "@babel/core";
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
               style={styles.userProfile}
             />
             <View>
-              <Text style={[styles.userText,{fontSize:14}]}>Welcome,</Text>
+              <Text style={[styles.userText, { fontSize: 14 }]}>Welcome,</Text>
               <Text style={[styles.userText, { fontSize: 18 }]}>
                 {user?.fullName}
               </Text>
@@ -37,7 +37,7 @@ const Header = () => {
         </View>
         <View style={styles.searchBar}>
           <AntDesign name="search1" size={24} color="black" />
-          <TextInput placeholder="Search Courses" style={styles.searchText}/>
+          <TextInput placeholder="Search Courses" style={styles.searchText} />
         </View>
       </View>
     )
@@ -65,18 +65,18 @@ const styles = StyleSheet.create({
     fontFamily: "PopMed",
   },
 
-  searchBar:{
-    display:"flex",
-    flexDirection:"row",
+  searchBar: {
+    display: "flex",
+    flexDirection: "row",
     backgroundColor: "white",
-    paddingLeft:20,
-    gap:15,
-    alignItems:"center",
-    borderRadius:36, 
-    marginTop:25,
+    paddingLeft: 20,
+    gap: 15,
+    alignItems: "center",
+    borderRadius: 36,
+    marginTop: 25,
   },
 
-  searchText:{
-    fontFamily:"PopReg"
+  searchText: {
+    fontFamily: "PopReg",
   },
 });

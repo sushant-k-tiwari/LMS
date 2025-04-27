@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import Colors from "@/app/utils/Colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 // Define type for course category
 type CourseCategory = {
@@ -86,6 +87,18 @@ const courseCategories: CourseCategory[] = [
 ];
 
 const AlsoView = () => {
+  // Using any type for navigation to avoid TypeScript errors
+  const navigation = useNavigation<any>();
+
+  const handleCategoryPress = (category: CourseCategory) => {
+    // You can navigate to a category detail screen or course listing
+    console.log(`Selected category: ${category.name}`);
+    // Uncomment and modify this line when you have the actual screen to navigate to
+    // navigation.navigate('CategoryDetail', { category });
+
+    // For now, just show visual feedback through the TouchableOpacity
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Also View</Text>
@@ -93,10 +106,18 @@ const AlsoView = () => {
         {/* Using regular View with map instead of FlatList for better rendering */}
         <View style={styles.gridContainer}>
           {courseCategories.map((item) => (
-            <View key={item.id} style={styles.card}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.card}
+              activeOpacity={0.7}
+              onPress={() => handleCategoryPress(item)}
+            >
               <View style={styles.iconContainer}>
                 <View
-                  style={[styles.iconBackground, { backgroundColor: item.color }]}
+                  style={[
+                    styles.iconBackground,
+                    { backgroundColor: item.color },
+                  ]}
                 >
                   <MaterialIcons name={item.iconName} size={24} color="white" />
                 </View>
@@ -105,7 +126,7 @@ const AlsoView = () => {
               <View style={styles.priceContainer}>
                 <Text style={styles.price}>{item.price}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>
