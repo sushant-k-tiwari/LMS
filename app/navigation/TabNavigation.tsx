@@ -10,6 +10,7 @@ import HomeScreen from '@/app/screens/HomeScreen';
 import MyCourses from '../screens/MyCourses';
 import LeaderBoard from '../screens/LeaderBoard';
 import ProfileScreen from '../screens/ProfileScreen';
+import Colors from '../utils/Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -19,27 +20,27 @@ const TabNavigation = () => {
         <Tab.Screen name='home' component={HomeScreen}
         options={{
             tabBarIcon:({color, size}) =>(
-                <FontAwesome5 name="home" size={size} color={color} />
+                <FontAwesome5 name="home" size={size} color={Colors.SECONDARY} />
             )
         }}/>
         <Tab.Screen name='my-course' component={MyCourses}
         options={{
             tabBarIcon:({color, size}) =>(
-                <MaterialIcons name="book" size={size} color={color} />
+                <MaterialIcons name="book" size={size} color={Colors.SECONDARY} />
             )
         }}/>
         <Tab.Screen name='leaderboard' component={LeaderBoard}
         options={{
             tabBarIcon:({color, size}) =>(
-                <MaterialIcons name="leaderboard" size={size} color={color} />
+                <MaterialIcons name="leaderboard" size={size} color={Colors.SECONDARY} />
             )
         }}/>
         <Tab.Screen name='profile' component={ProfileScreen}
         options={{
             tabBarIcon:({color, size}) =>(
-                <MaterialIcons name="supervised-user-circle" size={size} color={color} />
+                <MaterialIcons name="supervised-user-circle" size={size} color={Colors.SECONDARY} />
             )
-        }}/>
+        }} />
     </Tab.Navigator>
   )
 }

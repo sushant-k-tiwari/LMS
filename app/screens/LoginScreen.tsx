@@ -26,11 +26,7 @@ WebBrowser.maybeCompleteAuthSession();
 
 const LoginScreen = () => {
   useWarmUpBrowser();
-  const [loaded, error] = useFonts({
-    Pop: require("./../../assets/fonts/Poppins-Bold.ttf"),
-    Monst: require("./../../assets/fonts/Montserrat-SemiBoldItalic.ttf"),
-  });
-
+ 
   const { startSSOFlow } = useSSO();
 
   const onPress = useCallback(async () => {
@@ -135,7 +131,7 @@ const styles = StyleSheet.create({
   titleText: {
     color: "white",
     fontSize: 24,
-    fontFamily: "Pop",
+    fontFamily: "PopBold",
     textAlign: "center",
     lineHeight: 36,
   },
