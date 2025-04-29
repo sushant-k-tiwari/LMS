@@ -2,39 +2,61 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  ToastAndroid,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import CourseList from "../components/HomeScreen/CourseList";
 import DetailSection from "../components/CourseDetailSection/DetailSection";
 import Colors from "../utils/Colors";
 import ChapterSection from "../components/CourseDetailSection/ChapterSection";
-import { enrollCourse } from "../services";
+import { enrollCourse, getUserEnrolledCourse } from "../services";
 import { useUser } from "@clerk/clerk-expo";
+import ToastManager, { Toast } from "toastify-react-native";
 
 const CourseDetails = () => {
   const navigation = useNavigation();
   const params = useRoute().params;
   const { user } = useUser();
+  const [userEnrolledCourse, setUserEnrolledCourse] = useState([]);
+
   useEffect(() => {
     // console.log(params.course);
-  }, [params.course]);
+    if (user && params.course) {
+      GetUserEnrolledCourse();
+    }
+  }, [params.course, user]);
 
   const UserEnrollCourse = () => {
-    console.log("Enroll button clicked"); 
-    enrollCourse(
-      params.course.id,
-      user?.primaryEmailAddress?.emailAddress
-    ).then((resp) => {
-      console.log("Enroll Success:", resp);
-    }).catch(err => {
-      console.error("Enroll Error:", err);
-    });
+    enrollCourse(params.course.id, user?.primaryEmailAddress?.emailAddress)
+      .then((resp) => {
+        console.log("Enroll Success:", resp);
+      })
+      .catch((err) => {
+        console.error("Enroll Error:", err);
+      });
   };
-  
+
+  const GetUserEnrolledCourse = () => {
+    getUserEnrolledCourse(
+      params?.course.id,
+      user?.primaryEmailAddress?.emailAddress
+    )
+      .then((resp) => {
+        // console.log("Course was enrolled", resp.userEnrolledCourses);
+        if (resp) {
+          // ToastAndroid.show("Enrolled Successfully!", ToastAndroid.LONG);
+          GetUserEnrolledCourse();
+        }
+        setUserEnrolledCourse(resp.userEnrolledCourses);
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+      });
+  };
+
   return (
     params.course && (
       <ScrollView>
@@ -53,8 +75,17 @@ const CourseDetails = () => {
             </TouchableOpacity>
             <Text style={styles.courseText}>Course Details</Text>
           </View>
-          <DetailSection course={params.course} enrollCourse={()=>{UserEnrollCourse()}} />
-          <ChapterSection chapterList={params.course.chapters} />
+          <DetailSection
+            course={params.course}
+            userEnrolledCourse={userEnrolledCourse}
+            enrollCourse={() => {
+              UserEnrollCourse();
+            }}
+          />
+          <ChapterSection
+            chapterList={params.course.chapters}
+            userEnrolledCourse={userEnrolledCourse}
+          />
         </View>
       </ScrollView>
     )
