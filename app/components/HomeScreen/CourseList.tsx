@@ -36,7 +36,9 @@ const CourseList = () => {
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("course-details");
+              navigation.navigate("course-details", {
+                course:item
+              });
             }}
           >
             <CourseItem item={item} />
