@@ -12,7 +12,7 @@ import Colors from "@/app/utils/Colors";
 import { useNavigation } from "@react-navigation/native";
 
 
-const DetailSection = ({ course, enrollCourse}) => {
+const DetailSection = ({ course, enrollCourse, userEnrolledCourse}) => {
     const navigate = useNavigation();
   return (
     <View style={styles.container}>
@@ -51,9 +51,9 @@ const DetailSection = ({ course, enrollCourse}) => {
             justifyContent: "center",
           }}
         >
-          <TouchableOpacity style={styles.buttonWrap} onPress={()=>{enrollCourse()}}>
+          {userEnrolledCourse?.length==0?<TouchableOpacity style={styles.buttonWrap} onPress={()=>{enrollCourse()}}>
             <Text style={styles.buttonText}>Enroll for ₹{course.price}</Text>
-          </TouchableOpacity>
+          </TouchableOpacity>:null}
           <TouchableOpacity
             style={[styles.buttonWrap, { backgroundColor: Colors.SECONDARY }]}
           >
