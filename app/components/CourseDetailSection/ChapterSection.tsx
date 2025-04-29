@@ -3,7 +3,6 @@ import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Colors from "@/app/utils/Colors";
 import { useNavigation } from "@react-navigation/native";
-// import ChapterContentScreen from "@/app/screens/ChapterContentScreen";
 
 const ChapterSection = ({ chapterList, userEnrolledCourse }) => {
   const navigation = useNavigation();
@@ -11,8 +10,7 @@ const ChapterSection = ({ chapterList, userEnrolledCourse }) => {
     if (userEnrolledCourse.length == 0) {
       return;
     } else {
-      navigation.navigate("chapter-content");
-      content: content;
+      navigation.navigate("chapter-content", {content});
     }
   };
   return (
@@ -23,7 +21,7 @@ const ChapterSection = ({ chapterList, userEnrolledCourse }) => {
           key={item.id || item}
           style={[styles.chapterWrapper]}
           onPress={() => {
-            onChapterPress(item.content);
+            onChapterPress(item?.content);
           }}
         >
           <View style={styles.chapterContainer}>
