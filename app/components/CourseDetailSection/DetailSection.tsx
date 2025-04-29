@@ -9,9 +9,11 @@ import {
 import React from "react";
 import SpecItems from "./SpecItems";
 import Colors from "@/app/utils/Colors";
-import { getBackgroundColorAsync } from "expo-system-ui";
+import { useNavigation } from "@react-navigation/native";
 
-const DetailSection = ({ course }) => {
+
+const DetailSection = ({ course, enrollCourse}) => {
+    const navigate = useNavigation();
   return (
     <View style={styles.container}>
       <Image
@@ -46,10 +48,10 @@ const DetailSection = ({ course }) => {
             display: "flex",
             flexDirection: "row",
             gap: 5,
-            justifyContent: "space-evenly",
+            justifyContent: "center",
           }}
         >
-          <TouchableOpacity style={styles.buttonWrap}>
+          <TouchableOpacity style={styles.buttonWrap} onPress={()=>{enrollCourse()}}>
             <Text style={styles.buttonText}>Enroll for ₹{course.price}</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     lineHeight: 25,
   },
   buttonWrap: {
-    padding: 20,
+    padding: 14,
     backgroundColor: Colors.PRIMARY,
     borderRadius: 16,
   },
