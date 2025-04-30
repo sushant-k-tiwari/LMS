@@ -20,9 +20,11 @@ export const getCourseList = async () => {
           id
           content {
             markdown
+            html
           }
           chapter
         }
+        name
         description {
           markdown
         }
@@ -68,13 +70,18 @@ export const enrollCourse = async (courseId, userEmail) => {
   return result;
 };
 
-export const getUserEnrolledCourse = async(courseId, userEmail) => {
-  const query = gql`
+export const getUserEnrolledCourse = async (courseId, userEmail) => {
+  const query =
+    gql`
     query GetUserEnrolledCourse {
       userEnrolledCourses(
         where: {
-          courseId: "`+courseId+`"
-          userEmail: "`+userEmail+`"
+          courseId: "` +
+    courseId +
+    `"
+          userEmail: "` +
+    userEmail +
+    `"
         }
       ) {
         id
