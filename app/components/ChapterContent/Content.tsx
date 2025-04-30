@@ -1,16 +1,24 @@
-import { View, FlatList, Dimensions } from "react-native";
+import {
+  View,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+  Text,
+  ToastAndroid,
+  StyleSheet,
+} from "react-native";
 import React from "react";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import Markdown from "react-native-markdown-display";
+import Colors from "@/app/utils/Colors";
 
 const Content = () => {
   const route = useRoute();
   const { content } = route.params;
+  const navigation = useNavigation();
 
   const sections =
-    content.markdown
-      ?.split(/\n\n(?=##|\*\*)/) // simple split by paragraph with headings
-      .filter(Boolean) || [];
+    content.markdown?.split(/\n\n(?=##|\*\*)/).filter(Boolean) || [];
 
   const markdownStyles = {
     heading1: {
@@ -35,7 +43,6 @@ const Content = () => {
       fontFamily: "PopReg",
     },
     strong: {
-      // fontFamily: "MonstSb",
       fontSize: 24,
     },
     code_inline: {
@@ -57,27 +64,13 @@ const Content = () => {
       color: "#f8f8f2",
       padding: 12,
       borderRadius: 6,
-      fontFamily: "monospace", // Customize font family
+      fontFamily: "monospace",
       fontSize: 14,
     },
   };
 
   return (
-    <View
-      style={{
-        padding: 16,
-        backgroundColor: "white",
-        width: Dimensions.get("screen").width * 0.94,
-        display: "flex",
-        margin: 10,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 16,
-        height: "97%",
-      }}
-    >
+    <View style={styles.rootContainer}>
       <FlatList
         data={sections}
         keyExtractor={(item, index) => index.toString()}
@@ -93,3 +86,19 @@ const Content = () => {
 };
 
 export default Content;
+
+const styles = StyleSheet.create({
+  rootContainer: {
+    padding: 16,
+    backgroundColor: "white",
+    width: Dimensions.get("screen").width * 0.94,
+    display: "flex",
+    margin: 10,
+    marginLeft: "auto",
+    marginRight: "auto",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 16,
+    height: "97%",
+  },
+});

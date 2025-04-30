@@ -45,9 +45,7 @@ const CourseDetails = () => {
       user?.primaryEmailAddress?.emailAddress
     )
       .then((resp) => {
-        // console.log("Course was enrolled", resp.userEnrolledCourses);
         if (resp) {
-          // ToastAndroid.show("Enrolled Successfully!", ToastAndroid.LONG);
           GetUserEnrolledCourse();
         }
         setUserEnrolledCourse(resp.userEnrolledCourses);
