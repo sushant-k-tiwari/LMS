@@ -6,6 +6,14 @@ Whether you're looking to pick up a new skill, follow a structured curriculum, o
 
 ---
 
+## 📺 Demo Video
+
+[![LMS App Demo](https://img.youtube.com/vi/NugbhwSjZlc/0.jpg)](https://youtu.be/NugbhwSjZlc)
+
+> Click the image above or [watch the demo on YouTube](https://youtu.be/NugbhwSjZlc)
+
+---
+
 ## ✨ Features
 
 - **Browse Courses:** Discover a variety of online courses with detailed descriptions, banners, and author information.
