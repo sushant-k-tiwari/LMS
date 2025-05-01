@@ -4,9 +4,8 @@ import LoginScreen from "./screens/LoginScreen";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import HomeScreen from "@/app/screens/HomeScreen";
-import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./navigation/TabNavigation";
+import { CLERK_KEY } from "@env";
 
 export default function Index() {
   const [loaded, error] = useFonts({
@@ -35,13 +34,8 @@ export default function Index() {
   }
 
   return (
-    <ClerkProvider
-      publishableKey={
-        "pk_test_dGhhbmtmdWwtcG9sZWNhdC00OC5jbGVyay5hY2NvdW50cy5kZXYk"
-      }
-    >
+    <ClerkProvider publishableKey={CLERK_KEY}>
       <View style={styles.container}>
-        
         <SignedIn>
           <TabNavigation />
         </SignedIn>
@@ -49,7 +43,6 @@ export default function Index() {
         <SignedOut>
           <LoginScreen />
         </SignedOut>
-
       </View>
     </ClerkProvider>
   );

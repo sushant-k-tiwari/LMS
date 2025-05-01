@@ -19,7 +19,7 @@ const TabNavigation = () => {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="home"
+        name="Home"
         component={HomeScreenNavigation}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -28,7 +28,7 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="my-course"
+        name="My Courses"
         component={MyCourses}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -37,7 +37,7 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="leaderboard"
+        name="Leaderboard"
         component={LeaderBoard}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -50,7 +50,7 @@ const TabNavigation = () => {
         }}
       />
       <Tab.Screen
-        name="profile"
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (

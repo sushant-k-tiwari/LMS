@@ -1,7 +1,7 @@
 import { gql, request } from "graphql-request";
+import {HYGRAPH_API_KEY} from '@env'
 
-const MASTER_URL =
-  "https://ap-south-1.cdn.hygraph.com/content/cm9ya47pb00i907vz61b3orig/master";
+const MASTER_URL = HYGRAPH_API_KEY;
 
 export const getCourseList = async () => {
   const query = gql`
